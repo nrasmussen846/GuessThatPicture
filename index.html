@@ -1,0 +1,197 @@
+
+<html>
+<head>
+  <title>PlaneGuesser</title>
+  <script>
+    var score = 0;
+    var questionCount = 1;
+    var o = "";
+    var t = "";
+    var th = "";
+    var f = "";
+    var fi = "";
+    function run()
+    {
+      document.getElementById("question").innerHTML ="<img src='plane.png' alt='Plane'>"
+      if(questionCount == 1)
+      {
+        o = document.getElementById("answer").value;
+        if(document.getElementById("answer").value == "Plane") //ANSWER TO Q 1
+        {
+          score = score + 1;
+          questionCount = questionCount + 1;
+        }
+        else
+        {
+          questionCount = questionCount + 1;
+        }
+        document.getElementById("question").innerHTML ="<img src='squirrel.png' alt='Squirrel'>"; //Q2
+      }
+      else if(questionCount == 2)
+      {
+        t = document.getElementById("answer").value;
+        if(document.getElementById("answer").value == "Squirrel") //ANSWER TO Q 2
+        {
+          score = score + 1;
+          questionCount = questionCount + 1;
+        }
+        else
+        {
+          questionCount = questionCount + 1;
+        }
+        document.getElementById("question").innerHTML = "<img src='car.png' alt='Car'>"; //Q3
+      }
+      else if(questionCount == 3)
+      {
+        th = document.getElementById("answer").value;
+        if(document.getElementById("answer").value == "Car") //ANSWER TO Q 3
+        {
+          score = score + 1;
+          questionCount = questionCount + 1;
+        }
+        else
+        {
+          questionCount = questionCount + 1;
+        }
+        document.getElementById("question").innerHTML = "<img src='taco.png' alt='Taco'>"; //Q4
+      }
+      else if(questionCount == 4)
+      {
+        f = document.getElementById("answer").value;
+        if(document.getElementById("answer").value == "Taco") //ANSWER TO Q 4
+        {
+          score = score + 1;
+          questionCount = questionCount + 1;
+        }
+        else
+        {
+          questionCount = questionCount + 1;
+        }
+        document.getElementById("question").innerHTML = "<img src='drill.png' alt='drill'>"; //Q5
+      }
+      else if(questionCount == 5)
+      {
+        fi = document.getElementById("answer").value;
+        if(document.getElementById("answer").value == "Drill") //ANSWER TO Q 5
+        {
+          score = score + 1;
+          end();
+        }
+        else
+        {
+          end();
+        }
+      }
+    }//function closing
+
+    function end()
+    {
+      document.getElementById("answer").style.visibility = "hidden";
+      document.getElementById("submit").style.visibility= "hidden";
+      document.getElementById("question").innerHTML = "COMPLETE";
+      document.getElementById("playAgain").style.visibility= "visible";
+      document.getElementById("hidden").style.visibility ="visible";
+
+      document.getElementById("hidden").innerHTML = "You got " + score + "/5.<br>Answers:<br>1. Plane<br>2. Squirrel<br>3. Car<br>4. Taco<br>5. Drill<br> Your answers:<br>1. "+ o + "<br>2. "+ t + "<br>3. " + th + "<br>4. " + f + "<br>5. " +fi;
+
+       }
+
+       function playAgain()
+       {
+         document.getElementById("hidden").style.visibility ="hidden";
+         document.getElementById("answer").style.visibility = "visible";
+         document.getElementById("submit").style.visibility= "visible";
+         score = 0;
+         questionCount = 0;
+         o = "";
+         t = "";
+         th = "";
+         f = "";
+         fi = "";
+         run();
+         questionCount = 1;
+         document.getElementById("playAgain").style.visibility= "hidden";
+       }
+
+  </script>
+
+  <style>
+  body{
+    background-color: #67eb9c;
+  }
+  h2{
+    font-size: 65px;
+    margin-bottom: 0px;
+    font-family: monospace;
+  }
+  h3{
+    font-size: 25px;
+    margin-top: 0px;
+    font-family: monospace;
+    margin-bottom: 0px;
+  }
+  #top{
+    background-color: #67e0eb;
+    width: 800px;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  #bot{
+    background-color: #ebe967;
+    width: 700px;
+    padding-bottom: 10px;
+    border-radius: 25px;
+  }
+  hr{
+    width: 500px;
+    border: 5px solid #969696;
+
+  }
+  #question{
+    font-size: 40px;
+    font-family: monospace;
+  }
+  #submit{
+  background-color: #eb7d67;
+  font-family: monospace;
+  }
+  #playAgain{
+  background-color: #eb7d67;
+  font-family: monospace;
+  }
+  #hidden{
+    font-size: 25px;
+    font-family: sans-serif;
+  }
+  #playAgain{
+    visibility: hidden;
+  }
+  #submit:hover{
+  background-color: #035afc;
+  }
+  #playAgain:hover{
+  background-color: #035afc;
+  }
+  </style>
+</head>
+
+  <body>
+  <center>
+  <div id = "top">
+    <h2>What's this picture?</h2>
+    <h3>Can you name them all?</h3>
+  </div>
+  <div id ="bot">
+    <span id = "question"><img src="plane.png" alt="Plane"></span>
+    <br>
+    <input type = "text" id = "answer">
+    <input type = "button" value = "Submit Answer" onclick = "run()" id = "submit">
+    <br>
+    <input type = "button" value = "Play Again" onclick = "playAgain()" id = "playAgain">
+  </div>
+    <hr>
+    <span id = "hidden"></span>
+      </center>
+  </body>
+</html>
